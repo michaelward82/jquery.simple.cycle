@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Confetti Cycle jQuery Plugin Example</title>
+    <style>
+        /* Custom */
+        #rotations {
+            width: 630px;
+            height: 420px;
+        }
+        #rotations .controls {
+            height: 32px;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            text-align: center;
+            background: url("http://assets.confetti.co.uk/css/img/white-70pc.png") repeat scroll 0 0 transparent;
+            z-index: 5;
+            line-height: 1.5;
+        }
+
+        #rotations .controls li {
+            position: relative;
+            text-indent: -100000px;
+            text-transform: capitalize;
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            background: url("http://assets.confetti.co.uk/css/img/slideshow-controls.png") no-repeat right center
+            transparent;
+            margin: 10px 5px;
+        }
+
+        #rotations .controls a {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+        }
+
+        #rotations .controls li.prev, #rotations .controls li.next {
+            display: none;
+        }
+
+        #rotations .controls a.activeSlide {
+            background: url("//assets.confetti.co.uk/css/img/slideshow-controls.png") no-repeat left center transparent;
+        }
+
+
+        /* Plugin */
+        .jq-cycle {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+        .jq-cycle li {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <ul id="rotations" class="jq-cycle" data-jqc-duration="3000" data-jqc-trans_speed="500" data-jqc-load="lazy"
+            data-jqc-pause_on_hover="true" data-jqc-controls="true">
+        <li>
+            <a href="http://www.confetti.co.uk/shop/product/2014-confetti-magazine?icp=HomeRotation&icn=40pcOffMagazineOffer">
+                <img src="http://assets.confetti.co.uk/img/homepage/rotations/christmas-discount-homepage-rotation.jpg" />
+            </a>
+        </li>
+        <li>
+            <a href="http://www.confetti.co.uk/shop/product/2014-confetti-magazine?icp=HomeRotation&icn=2014Magazine">
+                <img src="http://assets.confetti.co.uk/img/homepage/rotations/christmas-magazine-homepage-rotation.jpg" />
+            </a>
+        </li>
+        <li data-jqc-lazy_img="http://assets.confetti.co.uk/img/homepage/rotations/disposable-wedding-camera-1-69.jpg"
+            data-jqc-lazy_link="http://www.confetti.co.uk/shop/wedding-reception-accessories/disposable-wedding-cameras?icp=HomeRotation&icn=Cameras">
+        </li>
+    </ul>
+
+    <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+    <script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <script src="../core.js"></script>
+
+    <script>
+        $(function() {
+            $(".jq-cycle").confetti_cycle();
+        });
+    </script>
+</body>
+</html>

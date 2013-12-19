@@ -1,0 +1,3 @@
+#!/bin/sh
+
+uglifyjs core.js --compression --mangle --output confetti.cycle.jquery.min.js
