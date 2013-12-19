@@ -63,7 +63,7 @@
 
             activeClass = i === 0 ? ' class="activeSlide"' : '';
 
-            $('ul', controls).append('<li><a' + activeClass + ' data-' + optionsDataPrefix + '-slide_no="' + i +
+            $('ul', controls).append('<li><a' + activeClass + ' data-' + optionsDataPrefix + 'slide_no="' + i +
                 '" href="#" ></a></li>');
         });
 
@@ -83,6 +83,9 @@
     function changeToSlide(slideNum) {
         nextSlide = slideNum;
         clearInterval(interval);
+        if (!$($slides[nextSlide]).data(optionsDataPrefix + 'lazy_loaded')) {
+            lazyLoadNextSlide();
+        }
         setControlsActiveSlide(nextSlide);
         swap();
         startCycling(true);
@@ -152,13 +155,15 @@
     function lazyLoadNextSlide() {
         var $img = $(''), $link = $('');
         if (options.load === 'lazy') {
-            if ($($slides[nextSlide]).data(optionsDataPrefix + 'lazy_img')) {
+            if ($($slides[nextSlide]).data(optionsDataPrefix + 'lazy_img') &&
+                !$($slides[nextSlide]).data(optionsDataPrefix + 'lazy_loaded')) {
                 $img = $('<img src="' + $($slides[nextSlide]).data(optionsDataPrefix + 'lazy_img') + '">');
                 if ($($slides[nextSlide]).data(optionsDataPrefix + 'lazy_link')) {
                     $link = $('<a href="' + $($slides[nextSlide]).data(optionsDataPrefix + 'lazy_link') + '"></a>');
                 }
                 $link.append($img);
                 $($slides[nextSlide]).append($link);
+                $($slides[nextSlide]).data(optionsDataPrefix + 'lazy-loaded', 'true');
             }
         }
     }
